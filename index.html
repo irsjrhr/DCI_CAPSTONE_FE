@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+
+		FE CAPSTONE
+
+	</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="asset/css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="asset/css/sweetalert2.min.css">
+	<script src="asset/js/sweetalert2.js"></script>
+
+
+
+</head>
+<body>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 text-center pt-5">
+				<img src="asset/gam/logo.png" style="width:100px;height: 100px;">
+				<h3 class="mb-3">  DCI CAPSTONE PROJECT BACKEND  </h3>
+				<p>
+					Tata Cara Pengerjaan : <br>
+					<a href="https://simplistic-rabbit-c57.notion.site/Tugas-Capstone-Backend-dengan-Node-JS-DCI-187cc5a60c3a809e9a20c9477a62511e"> https://simplistic-rabbit-c57.notion.site/Tugas-Capstone-Backend-dengan-Node-JS-DCI-187cc5a60c3a809e9a20c9477a62511e </a> 
+				</p>
+				<p>
+					Tata Cara Integrasi : <br>
+					<a href=""> Klik Disini </a> 
+				</p>
+
+				<button class="btn btn-primary" onclick="open_app_layer('#dci_app_booking')"> START APPS </button>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- App Layer -->
+	<div class="app_layer" id="dci_app_booking" style="display:none;">
+		<div class="backdrop"></div>
+		<!-- Container App Layer - Flex Vertical Area -->
+		<div class="container_app_layer">
+
+			<!-- Header Layer -->
+			<div class="header_layer" style="border: 2px solid #ccc">
+				<div class="container-fluid">
+					<div class="row justify-content-center">
+						<img src="asset/gam/browser.png" style="width:50px;height: 50px;">
+						<div class="col">
+							<div class="form-group">
+								<input type="text" class="form-control" name="base_url">
+							</div>
+						</div>
+						<div class="col-4 text-center">
+							<button class="btn btn-default btn_run_deploy btn_base_url btn_deploy">
+								<span class="deploy"> DEPLOY  </span>
+								<span class="stop_deploy"> STOP  </span>
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- End Of Header Layer -->
+
+			<!-- body Layer -->
+			<div class="body_layer" style="overflow: auto;">
+
+
+				<!-- Load Layer -->
+				<div class="load_layer">
+					<div class="content_load">
+						<div class="animasi_load">
+						</div>
+						<img src="asset/gam/logo.png">
+					</div>
+				</div>
+				<!-- End Of Load Layer -->
+				<style type="text/css">
+				.nav_content_layer *{
+					color: #fff;
+				}
+			</style>
+			<!-- Nav  -->
+			<nav class="nav_content_layer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col col_nav" data-content-id="content_data_room" onclick="open_content_dataRoom()">
+							<i class="fas fa-home"></i>
+							<p class="mt-1"> List Room </p>
+						</div>
+						<div class="col col_nav" data-content-id="content_tambah_room" onclick="open_contentLayer('#content_tambah_room')">
+							<i class="fas fa-plus"></i>
+							<p class="mt-1"> Tambah Room </p>
+
+						</div>
+						<div class="col col_nav" data-content-id="content_data_booking" onclick="open_content_dataBooking()">
+							<i class="fas fa-list"></i>
+							<p class="mt-1"> History Booking </p>
+
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- 				<button class="btn btn-secondary btn_back btn_home">
+				<i class="fas fa-home"></i>
+			</button> -->
+
+			<!-- Card Product Ex - Jadi Bahan Clone Di JS -->
+							<!-- Card Room -->
+				<div class="card card_product card_product_ex card_room" data-id-room="1" style="display: none">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="card_img">
+								<img src="asset/gam/course.png">
+							</div>
+							<div class="col pl-5">
+								<h3 class="text_flow_multi1" id="title_card"> Nama Room </h3>
+								<h5 class="text_flow_multi1"> Max : <span id="subtitle_card"> 10 </span> </h5>
+							</div>
+							<div class="col-12 card_btn">
+								<div class="form-row justify-content-end">
+									<button class="btn_view btn btn-primary mt-3">
+										View <i class="fas fa-eye"></i>
+									</button>
+									<button class="btn_delete_room btn btn-danger mt-3">
+										Hapus <i class="fas fa-trash"></i>
+									</button>
+									<button class="btn_edit_room btn btn-warning mt-3">
+										Edit <i class="fas fa-pen"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Of Card Room -->
+
+				<!-- Card Book -->
+				<div class="card card_product card_product_ex card_booking" data-id="1" style="display: none">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="card_img">
+								<img src="asset/gam/course.png">
+							</div>
+							<div class="col pl-5">
+								<h3 class="text_flow_multi1" id="title_card"> Nama Booking  </h3>
+								<h5 class="text_flow_multi1"> Room  Id : <span id="subtitle_card"> 10 </span> </h5>
+								<h5 class="text_flow_multi1"> Tanggal Book : <span id="tanggal_booking"> 20-20-2023 </span> </h5>
+							</div>
+							<div class="col-12 card_btn">
+								<div class="form-row justify-content-end">
+									<button class="btn_view btn btn-primary mt-3">
+										View <i class="fas fa-eye"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Of Card Book -->
+
+				<!-- End Of Card Product Ex -->			<!-- End Of Card Product Ex - Jadi Bahan Clone Di JS -->
+
+							<!-- content later  - welcome -->
+				<div id="content_welcome" class="content_layer">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 text-center pt-5">
+								<img src="asset/gam/logo.png" style="width:100px;height: 100px;">
+								<h3>  DCI APPS BOOKING ROOM  </h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End of content later - welcome  -->
+			<!-- Content Room -->
+							<!-- Content Layer - All Data -->
+				<div class="content_layer" id="content_data_room">
+					<!-- Data Product  -->
+					<div id="data_card_product">
+						<!-- Diisi oleh js dari bahann card product ex -->
+					</div>
+					<!-- End Of Data Product  -->
+
+				</div>
+				<!-- End Of Content Layer - All Data -->							<!-- Content Layer - View Data -->
+				<div class="content_layer" id="content_view_room" data-id="2">
+					<div class="img_thumb">
+						<img src="asset/gam/course.png">
+					</div>
+					<div class="container-fluid mt-4">
+						<div class="row">
+							<div class="col-12">
+								<h3 class="mb-3 text_flow_multi1" id="nama_room"> Nama Room </h3>
+								<button class="btn btn-secondary mb-3 mt-1">
+									Kapasitas : <span id="kapasitas"> 10 </span>
+								</button>
+								<p id="deskripsi"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+								<div class="form-group">
+									<button  class="btn btn-success btn_booking_room form-control mt-4">
+										BOOKING ROOM 
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Of Content Layer - View Data -->							<!-- Content Layer - Tambah Data -->
+				<div id="content_tambah_room" class="content_layer" style="padding: 20px;">
+					<h3 class="text-center mb-3">
+						Buat Room Baru
+					</h3>
+					<form id="form_tambah_room">
+						<div class="form-group">
+							<label> Nama Room : </label>
+							<input type="text" class="form-control" name="name">
+						</div>
+						<div class="form-group">
+							<label>  Deskripsi : </label>
+							<textarea class="form-control" name="description"></textarea>
+						</div>
+						<div class="form-group">
+							<label> Kapasitas : </label>
+							<input type="number" class="form-control" name="capacity">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success form-control mt-3"> 
+								<i class="fas fa-plus"></i>
+								Tambah Room Baru 
+							</button>
+						</div>
+						
+					</form>
+				</div>
+				<!-- End Of Content Layer - Tambah Data -->							<!-- Content Layer - edit Data -->
+				<div id="content_edit_room" class="content_layer" style="padding: 20px;">
+					<h3 class="text-center mb-3">
+						Edit Room Id : #<span id="id_room"> </span>
+					</h3>
+					<form id="form_edit_room">
+						<input type="hidden" name="id_room">
+
+						<div class="form-group">
+							<label> Nama Room : </label>
+							<input type="text" class="form-control" name="name">
+						</div>
+						<div class="form-group">
+							<label>  Deskripsi : </label>
+							<textarea class="form-control" name="description"></textarea>
+						</div>
+						<div class="form-group">
+							<label> Kapasitas : </label>
+							<input type="number" class="form-control" name="capacity">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-success form-control mt-3"> 
+								<i class="fas fa-plus"></i>
+								SUBMIT
+							</button>
+						</div>
+						
+					</form>
+				</div>
+				<!-- End Of Content Layer - edit Data -->
+			<!-- Content Booking -->
+							<!-- Content Layer - All Data -->
+				<div class="content_layer" id="content_data_booking">
+					<!-- Data Product  -->
+					<div id="data_card_product">
+						<!-- Diisi oleh js dari bahann card product ex -->
+					</div>
+					<!-- End Of Data Product  -->
+
+				</div>
+				<!-- End Of Content Layer - All Data -->							<!-- Content Layer - View Data -->
+				<div class="content_layer" id="content_view_booking" data-id="null">
+
+					<div class="container-fluid mt-4">
+						<div class="row">	
+
+							<!-- Col Room -->
+							<div class="col-12 col_room">
+								<!-- Card Room -->
+								<div class="card card_product mb-3 card_room" data-id="null">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="card_img">
+												<img src="asset/gam/course.png">
+											</div>
+											<div class="col pl-5">
+												<h3 class="text_flow_multi1" id="title_card"> Nama Room </h3>
+												<h5 class="text_flow_multi1"> Max : <span id="subtitle_card"> 10 </span> </h5>
+											</div>
+											<div class="col-12 card_btn">
+												<div class="form-row justify-content-end">
+													<button class="btn_view btn btn-primary mt-3">
+														View <i class="fas fa-eye"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- End Of Card Room -->
+							</div>
+							<!-- End Of Col Room -->
+
+							<style type="text/css">
+								.container_book *{
+									font-size: 20px;
+								}
+								.container_book .row{
+									border: 1px solid #ccc;
+									text-align: center;
+									padding: 20px;
+								}
+								.container_book .caption_book{
+									color: green;
+									font-weight: bold;
+								}
+							</style>
+							<!-- Col Detail Booking -->
+							<div class="col-12 col_detail_book">
+								<div class="container-fluid container_book">
+
+									<div class="row">
+										<div class="col title_book">  
+											Nama Bookings 
+										</div>
+										<div class="col caption_book" id="nama_booking">
+											Booking 1 
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col title_book">  
+											Kontak 
+										</div>
+										<div class="col caption_book" id="kontak_booking">
+											089889898
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col title_book">  
+											Tanggal 
+										</div>
+										<div class="col caption_book" id="tanggal_booking">
+											29-08-2001
+										</div>
+									</div>
+
+								</div>
+							</div>	
+							<!-- End Of Col Detail Booking -->
+						</div>
+					</div>
+				</div>
+				<!-- End Of Content Layer - View Data -->							<!-- Content Layer - Tambah Data -->
+				<div id="content_tambah_booking" class="content_layer" style="padding: 20px;">
+					<h3 class="text-center mb-3">
+						Booking Room Id : <span class="id_room"></span>
+					</h3>
+					<form id="form_tambah_booking">
+						<input type="hidden" name="id_room" class="id_room">
+						<div class="form-group">
+							<label> Nama Booking : </label>
+							<input type="text" class="form-control" name="name">
+						</div>
+						<div class="form-group">
+							<label>  Kontak Booking : </label>
+							<input type="text" class="form-control" name="contact">
+						</div>
+						<div class="form-group">
+							<label>  Tanggal Booking : </label>
+							<input type="date" class="form-control" name="date">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-success form-control mt-3"> 
+								<i class="fas fa-plus"></i>
+								Booking Room 
+							</button>
+						</div>
+						
+					</form>
+				</div>
+				<!-- End Of Content Layer - Tambah Data -->
+
+
+		</div>
+		<!--End Of body Layer -->
+
+	</div>
+	<!-- End Of Container App Layer - Flex Vertical Area -->
+</div>
+<!-- End Of App Layer  -->
+
+<!-- End Of Layer Dimension Fly App -->
+
+
+
+<script type="text/javascript" src="asset/js/jquery.min.js"></script>
+<script src="asset/js/jquery-ui.js"></script>
+<script type="text/javascript" src="asset/js/app.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+	})
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+:root{
+	--bgBasic : #108ee9
+}
+
+@font-face{
+	font-family: 'poppin';
+	src : url('../font/poppins/poppins.ttf')
+}
+
+@font-face{
+	font-family: 'inter';
+	src : url('../font/inter/inter.ttf')
+}
+
+
+@font-face{
+	font-family: 'sora';
+	src : url('../font/sora/sora.ttf')
+}
+
+@font-face{
+	font-family: 'lobster';
+	src : url('../font/lobster/Lobster-Regular.ttf')
+}
+
+
+@font-face{
+	font-family: 'pacific';
+	src : url('../font/pacific/Pacifico-Regular.ttf')
+}
+
+*{
+	font-family: poppin;
+}
+
+body{
+	/*background: var(--bgBasic);*/
+}
+
+
+
+
+.text_flow_multi1 {
+	/* Tampilkan 1 baris */
+	/*font-size: inherit;*/
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	position: relative;
+	color: inherit;
+}
+/*++++++++++++ */
+.app_layer{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.app_layer.active{
+	display: block !important;
+}
+.container_app_layer, .backdrop{
+	position: absolute;
+}
+.app_layer .backdrop{
+	width: 100%;
+	z-index: 98;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .4);
+	height: 100%;
+	/*display: none;*/
+}
+.app_layer .container_app_layer{
+	width: 50%;
+	z-index: 99;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+	height: 100%;
+	background: #fff;
+	z-index: 99;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid #ccc;
+	transition: .3s;
+	overflow: auto;
+	padding-bottom: 120px;
+
+}
+
+
+.container_app_layer .header_layer{
+	padding: 20px;
+	background: #fff;
+}
+.container_app_layer .body_layer{
+	flex: 1;
+	/*background: red;*/
+	position: relative;
+
+}
+.btn_back{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 9;
+}
+.btn_back i{
+	font-size: 30px;
+}
+
+.nav_content_layer{
+	/*Akan mengikuti posisi dan dimensi dari container_app_layer karena punya sifat transform : translate*/
+	position: fixed;
+	bottom : 0;
+	left: 0;
+	width: 100%;
+	background: var(--bgBasic);
+	z-index: 2;
+}
+.col_nav{
+	padding: 20px;
+	text-align: center;
+	/*border: 2px solid #ccc;*/
+	cursor: pointer;
+
+}
+.col_nav i{
+	color: #fff;
+	font-size: 40px;
+}
+
+.content_layer{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.content_layer.active{
+	display: block;
+}
+
+.load_layer{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, .5);
+	z-index: 9;
+}
+.content_load{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .5);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding: 10px;
+}
+.content_load .animasi_load{
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	border: 2px dashed #ccc;
+	animation: animasiLoadContent;
+	animation-duration: .7s;
+	animation-direction: alternate-reverse;
+	animation-iteration-count: infinite;
+}
+.content_load img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,  -50%);
+	width: 80%;
+	height: 80%;
+}
+
+
+@keyframes animasiLoadContent{
+	0%{
+		transform: rotate(0deg);
+	}
+	25%{
+		transform: rotate(90deg);
+	}
+	50%{
+		transform: rotate(180deg);
+	}
+	75%{
+		transform: rotate(270deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+
+
+
+/*Content Layer Data*/
+.content_layer #content_data{
+
+}
+#content_data  #data_card_product{
+}
+.col_url{
+	margin-left: 10px;
+}
+.card_product{
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+.card_product:last-child{
+	margin-bottom:200px;
+}
+.card_img{
+	width: 100px;
+	height: 70px;
+}
+.card_img img{
+	width: 100%;
+	height: 100%;
+}
+.card_btn button {
+	margin-right: 10px;
+}
+
+/*Content Layer View*/
+.img_thumb{
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+.img_thumb img{
+	width: 100%;
+	height: 100%;
+}
+
+.card_product_ex.card_room{
+	
+}
+.card_product_ex.card_booking{
+
+}
+
+
+.col_nav.active *{
+	color: gold;
+}
+
+
+
+@media( max-width:  500px){
+	.container_app_layer{
+		width: 100% !important;
+	}
+}
+
+.btn_run_deploy{
+
+}
+.btn_run_deploy span{
+	display: none;
+	color: #fff;
+}
+.btn_run_deploy.btn_deploy{
+	background: var(--bgBasic);
+}
+.btn_run_deploy.btn_stop_deploy{
+	background: red;
+}
+.btn_deploy .deploy{
+	display: block!important;
+}
+
+.btn_stop_deploy .stop_deploy{
+	display: block!important;
+}
